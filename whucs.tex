@@ -1,0 +1,153 @@
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule,
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{mathtools, bm}
+\usepackage{multicol}
+% --------------------Chinese Support--------------------------
+\usepackage{ctex}
+\usepackage{xeCJK}
+\usepackage{fontspec} 
+\setCJKmainfont{Microsoft YaHei}
+% --------------------Biber Support----------------------------
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{bib.bib}
+
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+\usefonttheme{professionalfonts}
+
+\DeclareOptionBeamer{width}
+{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+
+\DeclareOptionBeamer{hideothersubsections}
+{\PassOptionsToPackage{hideothersubsections=#1}{beamerouterthemesidebar}}
+
+\DeclareOptionBeamer{hideallsubsections}
+{\PassOptionsToPackage{hideallsubsections=#1}{beamerouterthemesidebar}}
+
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\useoutertheme[height=0pt,left]{sidebar}
+
+\usecolortheme{seahorse}
+\setbeamercolor*{titlelike}{parent=structure}
+
+\useinnertheme{rectangles}
+\setbeamertemplate{frametitle}{
+\leftskip=10pt\vspace{16pt}\insertframetitle
+}
+
+% ---------------Global Color Settings----------------------------
+%\definecolor{whucolor}{RGB}{0 114 198}%Blue
+\definecolor{whucolor}{RGB}{22 89 154}%WHUCSBlue
+%\definecolor{whucolor}{RGB}{1 168 156}%Cyan
+%\definecolor{whucolor}{RGB}{0 128 0}%Green
+%\definecolor{whucolor}{RGB}{249 105 14}%Orange
+%\definecolor{whucolor}{RGB}{102 51 153}%Purple
+%\definecolor{whucolor}{RGB}{150 40 26}%Red
+% ----------------------------------------------------------------
+
+\addtobeamertemplate{sidebar left}{}{{\hspace{0.15cm}\includegraphics[width=1.3cm]{whu.png}}\vspace{0.4cm}}
+\setbeamercolor{sidebar}{bg=whucolor}
+
+\setbeamercolor{author in sidebar}{bg=white,fg=white!20}
+\setbeamerfont{author in sidebar}{series=\itshape}
+
+\setbeamerfont{title}{size = {\fontsize{26}{36}}, series=\bfseries}
+\setbeamerfont{author}{size = {\fontsize{20}{40}}}
+\setbeamerfont{institute}{size = {\fontsize{15}{40}}}
+\setbeamerfont{date}{size = {\fontsize{18}{20}}}
+\setbeamerfont{frametitle}{size = {\fontsize{20}{20}}, series=\bfseries}
+
+
+\setbeamercolor{title in sidebar}{bg=white,fg=white}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+
+\setbeamercolor{structure}{fg=whucolor}
+\setbeamercolor{section in sidebar}{fg=white}
+\setbeamercolor{subsection in sidebar}{fg=white}
+
+
+\setbeamercolor{section in toc}{fg=whucolor}
+\setbeamercolor{subsection in toc}{fg=whucolor}
+\setbeamerfont{section in toc}{size = {\fontsize{16}{30}}}
+\setbeamerfont{subsection in toc}{size = {\fontsize{12}{16}}}
+
+\setbeamertemplate{section in toc}
+{\leavevmode\leftskip=5ex%
+	\llap{%
+		\usebeamerfont*{section number projected}%
+		\usebeamercolor{section number projected}%
+		\begin{pgfpicture}{-1ex}{-0.5ex}{3ex}{4ex}
+			\color{bg}
+			\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.7ex}
+			\pgfusepath{fill}
+			\pgftext[base]{\color{fg}\inserttocsectionnumber}
+		\end{pgfpicture}\kern1.25ex%
+	}%
+	\inserttocsection\par}
+\setbeamertemplate{subsection in toc}
+{\leavevmode\leftskip=3em$\bullet$\hskip.5em\inserttocsubsection\par}
+
+
+\setbeamerfont{caption name}{size = {\fontsize{12}{12}}}
+\setbeamerfont{caption}{size = {\fontsize{12}{12}}}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[default, osfigures]{opensans}
+
+\usepackage{transparent}
+\usebackgroundtemplate{
+	% ---------------------aspectratio=1610-----------------------
+	\hspace*{0.235\paperwidth}
+	{\includegraphics[width=0.6\paperwidth]{whucs}}
+	% ------------------------------------------------------------
+
+	% ---------------------aspectratio=169------------------------
+	%\hspace*{0.26\paperwidth}
+	%{\includegraphics[width=0.55\paperwidth]{whucs}}
+	% ------------------------------------------------------------
+
+	% ---------------------aspectratio=43-------------------------
+	%\hspace*{0.18\paperwidth}
+	%{\includegraphics[width=0.725\paperwidth]{whucs}}
+	% ------------------------------------------------------------
+}
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{enumerate item}[circle]
+\setbeamertemplate{enumerate subitem}[circle]
+\setbeamercolor{block title}{bg=whucolor,fg=white}
+\setbeamercolor{block title example}{fg=whucolor}
+
+\makeatletter
+\setbeamercolor{myfootlinetext}{fg=whucolor}
+\newdimen\mywidth%
+\setlength{\mywidth}{\paperwidth}%
+\addtolength{\mywidth}{-\beamer@sidebarwidth}%
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\beamer@sidebarwidth,ht=1ex,dp=1ex,right]{sidebar}%
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\mywidth,ht=1ex,dp=1ex,right]{myfootlinetext}%
+    \usebeamerfont{date in head/foot}\hfill\inserttitle\hspace*{2em}\insertshortauthor{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+
+\mode
+<all>
